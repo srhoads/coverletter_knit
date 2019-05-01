@@ -1,0 +1,81 @@
+
+jadrian_coverletter <- function(company="SRhoadsian LLC.",
+                        position="Cat Whisperer",
+                        additional_paragraph="",
+                        filename_override=NULL
+){
+  midbit <- c(
+    
+    "\\colorbox{mygray}{ % Creates a highlight behind the text using the previously-defined navy color",
+    "\\parbox[t]{\\linewidth}{ % Creates a box to take up the entire line width",
+    "\\vspace*{14pt} % Whitespace above the text",
+    "\\hfill \\color{white} \\textsc{\\huge Jadrian Charles Guy } % Right-aligned heading text",
+    "\\vspace*{14pt} % Whitespace below the text",
+    "}}",
+    
+    "\\large{\\\\ \\\\",
+    as.character(Sys.Date()), "\\hfill ", "\\textbf{jadrian.guy@columbia.edu} \\\\",
+    "}",
+    
+    "\\large{",
+    "\\vspace*{14pt} % Whitespace above the text",
+    "\\hfill \\color{white} {\\textbf{\\large(917) 535-8526}}",
+    "}",
+    
+    "\\\\",
+    # "\\\\",
+    
+    "\\large{Dear \\textbf{", company, "},}",
+    
+    "\\\\",
+    "\\\\",
+    
+    "\\large{",
+    "I am writing to express my interest in obtaining a position as a \\textbf{", position,"}at your firm. Currently, I am entering the second semester of my Senior year at Columbia University and will graduate in May with a Bachelor of Arts degree in Political Science with a concentration in Race and Ethnicity Studies. During my time at Columbia, I tailored my courses to focus upon the legislative and judicial branches of the American justice system. Ultimately, I aspire to attend law school and pursue my goal of becoming a lawyer in New York. Now, I seek to build my experience working (and learning) alongside the lawyers at your firm, and sculpting my legal research and analysis techniques. Your firm would help me refine my legal path moving forward. The way I see it, my employment at", company, " would function as a mutually beneficial partnership: for you and for me!
+
+Working as a paralegal at", company, " would allow me to apply the skills and training that I have developed throughout my academic career in a manner outside the classroom where my contributions have real world effects. I find such an opportunity to be extremely exciting and look forward to making use of the education and skills I have accumulated. As a paralegal I would be granted the opportunity to apply my training in the collection, review, and analysis of legal text and data to assist your staff in their cases. I am confident that the comprehension skills I’ve developed from my reading-and-writing-heavy course loads have prepared me to draft and present reports to both staff and clients on their cases. Furthermore, the nature of my studies has required me to become adept at both writing reports and creating data visualizations using Excel’s pivot tables. I'm proficient in Qualtrics, VennGage, Tableau, and Canva and have experience with legal research resources (LexisNexis, WestLaw, government databases).
+
+As a low-income student that has been steadily employed since the age of 14, my work experience showcases my dedication to the idea that hard work produces positive returns. My most recent employment has been as a research assistant for the Columbia University Senate office and the School of International and Public Affairs (SIPA), where I've refined my data collection and manipulation skills, as well as record management and organization. I was in charge of visualizing the school's demographic data. My work in this area contributed to several changes being made in the university’s admissions processes. As a SIPA employee, I assisted in the collection and organization of decades worth of lobbying data from federal agencies, ultimately contributing to the publishing of several conference papers and scholarly articles about the influence of lobbying on federal rule making. Along with my work at the university, I have also worked as a correctional officer and court bailiff, which exposed me to many aspects of the legal process. As a result, I have had the opportunity to witness hundreds of court cases and provide testimony in several dozen as well.
+
+", additional_paragraph, "
+
+The chance to work as a paralegal at", company, " is an intriguing one. From what I’ve researched about your firm, the work that I would be involved in is exactly what I have been looking for. Ultimately I seek to make a positive impact as a lawyer and I see your firm as the first step. I'm looking forward to corresponding further.",
+    "}",
+    
+    "\\\\",
+    "\\\\",
+    
+    # "djf",
+    "\\large{Sincerely,}\\\\",
+    "\\\\",
+    "\\large{\\textbf{Jadrian}}\\\\",
+    "\\\\",
+    "\\small{\\textbf{Political Science, \\\\ Race/Ethnicity Studies, B.A.}}\\\\"#,
+    # "\\large{Jadrian}"
+    # "\\\\Jadrian}"
+    
+    
+  ) %>% 
+    paste0(collapse = '\n')
+  
+  latextext <- paste0(top, midbit, bottom,  collapse="\n")
+  
+  filename_rnw <- paste0("coverletter_", company, "_", Sys.Date(), ".Rnw")
+  filename_tex <- paste0("coverletter_", company, "_", Sys.Date(), ".tex")
+  
+  if(!is.null(filename_override)){
+    filename_rnw <- paste0(filename_override, ".Rnw")
+    filename_tex <- paste0(filename_override, ".tex")
+  }
+  
+  write(latextext, file = filename_rnw)
+  knit2pdf(input = filename_rnw, output = filename_tex, compiler = 'xelatex', envir = environment())
+}
+
+
+jadrian_coverletter()
+
+
+
+
+

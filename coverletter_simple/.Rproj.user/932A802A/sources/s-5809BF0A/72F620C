@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556731465491.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "72F620C",
+    "lastKnownWriteTime" : 1556735980,
+    "last_content_update" : 1556735980008,
+    "path" : "~/GitHub/coverletter_code/simple_coverletter.R",
+    "project_path" : "simple_coverletter.R",
+    "properties" : {
+        "cursorPosition" : "4,20",
+        "scrollLine" : "4",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
